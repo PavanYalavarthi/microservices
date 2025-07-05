@@ -1,0 +1,16 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: fraud
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fraud_check_history
+    username: pavan
+    password: Pavan@123
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
