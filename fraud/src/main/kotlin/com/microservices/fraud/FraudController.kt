@@ -1,4 +1,4 @@
-package com.projects.microservices.fraud
+package com.microservices.fraud
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

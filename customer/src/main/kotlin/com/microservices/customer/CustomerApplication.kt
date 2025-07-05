@@ -1,4 +1,4 @@
-package com.projects.microservices.customer
+package com.microservices.customer
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

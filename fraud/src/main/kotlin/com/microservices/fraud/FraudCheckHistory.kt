@@ -1,4 +1,4 @@
-package com.projects.microservices.fraud
+package com.microservices.fraud
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

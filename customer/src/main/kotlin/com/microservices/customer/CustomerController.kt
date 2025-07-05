@@ -1,4 +1,4 @@
-package com.projects.microservices.customer
+package com.microservices.customer
 
 import lombok.extern.slf4j.Slf4j
 import org.springframework.http.ResponseEntity

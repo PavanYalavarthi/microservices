@@ -1,4 +1,4 @@
-package com.projects.microservices.fraud
+package com.microservices.fraud
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

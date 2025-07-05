@@ -1,4 +1,4 @@
-package com.projects.microservices.customer
+package com.microservices.customer
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

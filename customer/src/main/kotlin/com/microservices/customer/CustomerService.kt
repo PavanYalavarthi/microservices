@@ -1,4 +1,4 @@
-package com.projects.microservices.customer
+package com.microservices.customer
 
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
@@ -14,7 +14,7 @@ class CustomerService(val customerRepository: CustomerRepository, val restTempla
     )
     customerRepository.saveAndFlush(customer)
     val isFraudster = restTemplate.getForObject(
-      "http://localhost:8081/api/v1/fraud-check/{customerId}",
+      "http://FRAUD/api/v1/fraud-check/{customerId}",
       Boolean::class.java,
       customer.id
     )

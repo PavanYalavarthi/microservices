@@ -1,4 +1,4 @@
-package com.projects.microservices.customer
+package com.microservices.customer
 
 data class CustomerRegistrationRequest(
   val firstName: String,
