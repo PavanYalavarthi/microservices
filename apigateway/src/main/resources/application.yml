@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: apigateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: customer
+              uri: lb://CUSTOMER
+              predicates:
+                - Path=/api/v1/customers/**
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
