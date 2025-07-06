@@ -1,0 +1,32 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: notification
+  datasource:
+    url: jdbc:postgresql://localhost:5432/notification
+    username: pavan
+    password: Pavan@123
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  rabbitmq:
+    addresses: localhost:5672
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+rabbitmq:
+  exchanges:
+    internal: internal-exchange
+  queue:
+    notification: notification.queue
+  routing-keys:
+    internal-notification: internal.notification.routing-key

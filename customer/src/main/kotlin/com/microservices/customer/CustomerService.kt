@@ -1,10 +1,16 @@
 package com.microservices.customer
 
+import com.microservices.amqp.RabbitMQMessageProducer
 import com.microservices.clients.fraud.FraudClient
+import com.microservices.clients.notification.NotificationRequest
 import org.springframework.stereotype.Service
 
 @Service
-class CustomerService(val customerRepository: CustomerRepository, val fraudClient: FraudClient) {
+class CustomerService(
+  val customerRepository: CustomerRepository,
+  val fraudClient: FraudClient,
+  val rabbitMQMessageProducer: RabbitMQMessageProducer
+) {
 
   fun  registerCustomer(customerRegistrationRequest: CustomerRegistrationRequest): Customer {
     val customer = Customer(
@@ -17,6 +23,12 @@ class CustomerService(val customerRepository: CustomerRepository, val fraudClien
     if (fraudCheckResponse.isFraudster) {
       throw IllegalStateException("Customer is a Fraudster")
     }
+    val notificationRequest = NotificationRequest(
+      customer.id,
+      customer.email,
+      "Hi %s, welcome to project, ... ${customer.firstName} ${customer.lastName}"
+    )
+    rabbitMQMessageProducer.publish(notificationRequest,  "internal-exchange", "internal.notification.routing-key")
     return customer
   }
 }

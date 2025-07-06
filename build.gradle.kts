@@ -4,6 +4,7 @@ plugins {
   id("org.springframework.boot") version "3.5.3"
   id("io.spring.dependency-management") version "1.1.7"
 }
+
 allprojects {
   repositories {
     mavenCentral()
@@ -36,9 +37,7 @@ subprojects {
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     implementation("io.micrometer:micrometer-tracing-bridge-brave")
     implementation("io.zipkin.reporter2:zipkin-reporter-brave")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("io.github.oshai:kotlin-logging-jvm:5.1.0")
   }
 }
 

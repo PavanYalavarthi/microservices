@@ -34,6 +34,12 @@ services:
       - "9411:9411"
     networks:
       - spring
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"     # RabbitMQ (AMQP)
+      - "15672:15672"   # RabbitMQ Management UI
 networks:
   postgres:
     driver: bridge
