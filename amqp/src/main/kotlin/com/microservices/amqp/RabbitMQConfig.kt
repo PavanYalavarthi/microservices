@@ -16,7 +16,7 @@ class RabbitMQConfig(private val connectionFactory: ConnectionFactory) {
   @Bean
   fun amqpTemplate(): AmqpTemplate {
     val rabbitTemplate = RabbitTemplate(connectionFactory)
-    rabbitTemplate.messageConverter = Jackson2JsonMessageConverter()
+    rabbitTemplate.messageConverter = messageConverter()
     return rabbitTemplate
   }
 

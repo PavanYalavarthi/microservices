@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.projects"
-version = "unspecified"
+version = "1.0.0"
 
 repositories {
   mavenCentral()
@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
   implementation("org.springframework.boot:spring-boot-starter-amqp")
+  implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 }
 
 tasks.test {

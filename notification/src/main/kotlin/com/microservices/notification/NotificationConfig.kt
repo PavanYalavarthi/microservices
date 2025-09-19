@@ -5,20 +5,22 @@ import org.springframework.amqp.core.BindingBuilder
 import org.springframework.amqp.core.Queue
 import org.springframework.amqp.core.TopicExchange
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-class NotificationConfig (
+class NotificationConfig {
+
   @Value("\${rabbitmq.exchanges.internal}")
-  val internalExchange: String,
+  lateinit var internalExchange: String
 
   @Value("\${rabbitmq.queue.notification}")
-  val notificationQueue: String,
+  lateinit var notificationQueue: String
 
   @Value("\${rabbitmq.routing-keys.internal-notification}")
-  val internalNotificationRoutingKey: String,
-) {
+  lateinit var internalNotificationRoutingKey: String
+
   @Bean
   fun internalTopicExchange(): TopicExchange {
     return TopicExchange(internalExchange )
@@ -30,7 +32,7 @@ class NotificationConfig (
   }
 
   @Bean
-  fun internalNotificationBinding(): Binding{
+  fun internalNotificationBinding(): Binding {
     return BindingBuilder
       .bind(notificationQueue())
       .to(internalTopicExchange())

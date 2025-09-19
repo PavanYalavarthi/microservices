@@ -26,7 +26,7 @@ class CustomerService(
     val notificationRequest = NotificationRequest(
       customer.id,
       customer.email,
-      "Hi %s, welcome to project, ... ${customer.firstName} ${customer.lastName}"
+      "Hi ${customer.firstName} ${customer.lastName}, welcome to project, ... "
     )
     rabbitMQMessageProducer.publish(notificationRequest,  "internal-exchange", "internal.notification.routing-key")
     return customer
